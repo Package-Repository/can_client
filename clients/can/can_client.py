@@ -133,11 +133,10 @@ class Can_Client():
         return response.status if response else NO_RESPONSE
 
     def make_motor_request(self, thrusts):
-        MAX_POWER                       = 100
-        convertedThrusts =              [int(thrust * MAX_POWER) for thrust in thrusts]
+        convertedThrusts =              [int(thrust) for thrust in thrusts]
         byteThrusts =                   [thrust & 0xFF for thrust in convertedThrusts]
         can_frame =                     SendFrame.Request()
-        can_frame.can_id =              Command.MOTOR.value,
+        can_frame.can_id =              int(Command.MOTOR.value),
         can_frame.can_dlc =             len(byteThrusts),
         can_frame.can_data =            byteThrusts
         response =                      make_service_call(self.can_client.node, self.can_client.client, can_frame)
