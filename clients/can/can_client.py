@@ -136,8 +136,8 @@ class Can_Client():
         convertedThrusts =              [int(thrust) for thrust in thrusts]
         byteThrusts =                   [thrust & 0xFF for thrust in convertedThrusts]
         can_frame =                     SendFrame.Request()
-        can_frame.can_id =              int(Command.MOTOR.value),
-        can_frame.can_dlc =             len(byteThrusts),
+        can_frame.can_id =              int(Command.MOTOR.value)
+        can_frame.can_dlc =             len(byteThrusts)
         can_frame.can_data =            byteThrusts
         response =                      make_service_call(self.can_client.node, self.can_client.client, can_frame)
         return response.status if response else NO_RESPONSE
