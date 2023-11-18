@@ -75,7 +75,7 @@ class Can_Client():
         The can client defines various functions to make it easy to utilize common features.
         This could be added to later with other frames.
     """ 
-    def sendNothing(self):
+    def send_nothing(self):
         can_frame = SendFrame.Request()
         can_frame.can_frame.can_id = Command.MOTOR.value
         can_frame.can_frame.can_dlc = 1
@@ -83,7 +83,7 @@ class Can_Client():
         response = make_service_call(self.can_client.node, self.can_client.client, can_frame)
         return response.status if response else NO_RESPONSE
 
-    def setBotInSafeMode(self):
+    def set_bot_in_safe_mode(self):
         can_frame = SendFrame.Request()
         can_frame.can_frame.can_id = Command.STOW.value
         can_frame.can_frame.can_dlc = 5
@@ -91,7 +91,7 @@ class Can_Client():
         response = make_service_call(self.can_client.node, self.can_client.client, can_frame)
         return response.status if response else NO_RESPONSE
 
-    def enableLight(self):
+    def enable_light(self):
         can_frame = SendFrame.Request()
         can_frame.can_id = Command.STOW.value
         can_frame.can_dlc = 5
@@ -99,7 +99,7 @@ class Can_Client():
         response = make_service_call(self.can_client.node, self.can_client.client, can_frame)
         return response.status if response else NO_RESPONSE
 
-    def turnOnLight(self):
+    def turn_on_light(self):
         can_frame = SendFrame.Request()
         can_frame.can_id = Command.STOW.value
         can_frame.can_dlc = 5
@@ -107,7 +107,7 @@ class Can_Client():
         response = make_service_call(self.can_client.node, self.can_client.client, can_frame)
         return response.status if response else NO_RESPONSE
 
-    def turnOffLight(self):
+    def turn_off_light(self):
         can_frame = SendFrame.Request()
         can_frame.can_id = Command.STOW.value
         can_frame.can_dlc = 5
@@ -116,7 +116,7 @@ class Can_Client():
         response = make_service_call(self.can_client.node, self.can_client.client, can_frame)
         return response.status if response else NO_RESPONSE
 
-    def killRobot(self):
+    def kill_robot(self):
         can_frame = SendFrame.Request()
         can_frame.can_id = Command.SOFTKILL.value
         can_frame.can_dlc = 0,
@@ -124,7 +124,7 @@ class Can_Client():
         response = make_service_call(self.can_client.node, self.can_client.client, can_frame)
         return response.status if response else NO_RESPONSE
 
-    def allClear(self):
+    def all_clear(self):
         can_frame = SendFrame.Request()
         can_frame.can_id = Command.CLEARERR.value
         can_frame.can_dlc = 0,
