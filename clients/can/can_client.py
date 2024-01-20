@@ -119,7 +119,7 @@ class Can_Client():
     def kill_robot(self):
         can_frame = SendFrame.Request()
         can_frame.can_id = Command.SOFTKILL.value
-        can_frame.can_dlc = 0,
+        can_frame.can_dlc = 0
         can_frame.can_data = KILL
         response = make_service_call(self.can_client.node, self.can_client.client, can_frame)
         return response.status if response else NO_RESPONSE
@@ -127,7 +127,7 @@ class Can_Client():
     def all_clear(self):
         can_frame = SendFrame.Request()
         can_frame.can_id = Command.CLEARERR.value
-        can_frame.can_dlc = 0,
+        can_frame.can_dlc = 0
         can_frame.can_data = ALL_CLEAR
         response = make_service_call(self.can_client.node, self.can_client.client, can_frame)
         return response.status if response else NO_RESPONSE
