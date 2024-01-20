@@ -77,17 +77,17 @@ class Can_Client():
     """ 
     def send_nothing(self):
         can_frame = SendFrame.Request()
-        can_frame.can_frame.can_id = Command.MOTOR.value
-        can_frame.can_frame.can_dlc = 1
-        can_frame.can_frame.can_data = NOTHING
+        can_frame.can_id = Command.MOTOR.value
+        can_frame.can_dlc = 1
+        can_frame.can_data = NOTHING
         response = make_service_call(self.can_client.node, self.can_client.client, can_frame)
         return response.status if response else NO_RESPONSE
 
     def set_bot_in_safe_mode(self):
         can_frame = SendFrame.Request()
-        can_frame.can_frame.can_id = Command.STOW.value
-        can_frame.can_frame.can_dlc = 5
-        can_frame.can_frame.can_data = SAFE_MODE
+        can_frame.can_id = Command.STOW.value
+        can_frame.can_dlc = 5
+        can_frame.can_data = SAFE_MODE
         response = make_service_call(self.can_client.node, self.can_client.client, can_frame)
         return response.status if response else NO_RESPONSE
 
